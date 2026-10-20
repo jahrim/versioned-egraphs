@@ -1,24 +1,74 @@
-[package]                   # TODO: project information
-name = "rust_template"      
+[package]
+name = "versioned-egraphs"      
 version = "0.1.0"
 edition = "2021"            # Rust Version
+rust-version = "1.75"       # Minimum Supported Rust Version
 authors = [
-    "Jahrim Gabriele Cesario <jahrimgabriele.cesario@unisg.ch>"
+    "Jahrim Gabriele Cesario <jahrimgabriele.cesario@unisg.ch>",
 ]
 license = "MIT"
-homepage = ""
-repository = ""
-documentation = ""
-description = ""
+homepage = "https://prg-grp.github.io/egraphs-extensions-website/"
+repository = "https://github.com/jahrim/versioned-egraphs"
+documentation = "https://docs.rs/versioned-egraphs"
+description = "Versioned E-Graphs for conditional equational reasoning."
+categories = ["data-structures"]
+keywords = ["union-find", "e-graph", "conditions"]
+
+[workspace]
+members = ["experiments"]
+
+[features]
+default = ["pc-half"]
+
+# Path compression strategies:
+# https://en.wikipedia.org/wiki/Disjoint-set_data_structure#Finding_set_representatives
+pc-none = []
+pc-split = []
+pc-half = []
+pc-full = []
+
+# Debugging
+trace = ["tracing", "tracing-subscriber"]
+trace-unionfind-basic = ["trace"]
+trace-unionfind-egg = ["trace"]
+trace-unionfind-persistent = ["trace"]
+trace-unionfind-versioned = ["trace"]
+trace-unionfind = ["trace-unionfind-basic", "trace-unionfind-egg", "trace-unionfind-persistent", "trace-unionfind-versioned"]
+trace-egraph-basic = ["trace"]
+trace-egraph-persistent = ["trace"]
+trace-egraph-versioned = ["trace"]
+trace-egraph = ["trace-egraph-basic", "trace-egraph-persistent", "trace-egraph-versioned"]
+trace-disequalities = ["trace"]
+trace-machine = ["trace"]
+trace-all = ["trace-unionfind", "trace-egraph", "trace-disequalities", "trace-machine"]
 
 [lib]
-name = "rustlib"            # TODO: change library name
+name = "veg"
 path = "src/lib.rs"
 
 [dependencies]              # Used by your library
+# "immutable data structures"
+im = { version = "15.1.0" }   
+# "fast non-cryptographic hasher"
+rustc-hash = { version = ">=2.1.1, <2.1.2" }
+# "hashtable with consistent order and fast iteration"
+indexmap = ">=2.7.0, <2.12"
+# "vectors storing a small number of items on the stack"
+smallvec = "1.8.0"
+# "libraries for tracing and debugging function applications"
+tracing = { version = "0.1", optional = true }
+tracing-subscriber = { version = "0.3.0", optional = true }
 
 [dev-dependencies]          # Used for development (e.g., testing libraries...)
+# "benchmarking framework"
+# criterion = { version = "0.5", features = ["html_reports"] } 
 
-[[bin]]                     # Executables
-name = "main"
-path = "src/bin/main.rs"
+# [[bin]]                     # Executables
+# name = "main"
+# path = "src/bin/main.rs"
+
+# [[bench]]                   # Benchmarks
+# harness = false
+
+# [profile.bench]
+# opt-level = 3               # Benchmark Optimization Level

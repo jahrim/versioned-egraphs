@@ -1,10 +1,4 @@
-mod lib {
-    fn api(){}
+#![doc = include_str!("../README.md")]
 
-    #[cfg(test)]
-    mod tests {
-        use super::*;
-
-        #[test] fn unit_test() { api(); }
-    }
-}
+pub mod structures;
+pub mod util;

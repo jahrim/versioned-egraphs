@@ -1,0 +1,34 @@
+[package]
+name = "veg-experiments"
+version = "0.1.0"
+edition = "2021"            # Rust Version
+authors = [
+    "Jahrim Gabriele Cesario <jahrimgabriele.cesario@unisg.ch>",
+    "George Zakhour <george.zakhour@unisg.ch>",
+    "Pascal Weisenburger <pascal.weisenburger@unisg.ch>",
+    "Guido Salvaneschi <guido.salvaneschi@unisg.ch>"
+]
+description = "Experiments and parameter analysis for Versioned E-Graphs."
+publish = false
+
+[dependencies]
+# "versioned egraphs"
+veg = { package = "versioned-egraphs", path = ".." }
+# "colored egraphs"
+easter_egg = { package = "easter-egg", git = "https://github.com/eytans/egg.git", rev = "9e5da4cdf6f9057ee55e67ab6fdee000d1814885" }
+# "random number generation"
+rand = { version = "0.8.5" }
+# "immutable data structures"
+im = { version = "15.1.0" }
+# "fast non-cryptographic hasher"
+rustc-hash = { version = "2.1.1" }
+# "allocator for limiting memory usage"
+cap = "0.1.2"
+
+[[bin]]                     # Executables
+name = "easteregg-experiments"
+path = "src/bin/easteregg-experiments.rs"
+
+[[bin]]
+name = "parameter-analysis"
+path = "src/bin/parameter-analysis.rs"

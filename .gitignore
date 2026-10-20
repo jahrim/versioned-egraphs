@@ -22,3 +22,9 @@ Cargo.lock
 
 # Added by cargo
 /target
+
+# Hidden files and folders (editor settings, shell and tool configuration, ...).
+# To commit a hidden file anyway, add an exception like the ones below.
+.*
+!.gitignore
+!.github/
