@@ -1,0 +1,24 @@
+[package]                   # TODO: project information
+name = "rust_template"      
+version = "0.1.0"
+edition = "2021"            # Rust Version
+authors = [
+    "Jahrim Gabriele Cesario <jahrimgabriele.cesario@unisg.ch>"
+]
+license = "MIT"
+homepage = ""
+repository = ""
+documentation = ""
+description = ""
+
+[lib]
+name = "rustlib"            # TODO: change library name
+path = "src/lib.rs"
+
+[dependencies]              # Used by your library
+
+[dev-dependencies]          # Used for development (e.g., testing libraries...)
+
+[[bin]]                     # Executables
+name = "main"
+path = "src/bin/main.rs"
